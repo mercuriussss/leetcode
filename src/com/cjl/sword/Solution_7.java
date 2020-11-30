@@ -1,13 +1,17 @@
-package com.cjl.sword.tree;
+package com.cjl.sword;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RebuildTree {
+public class Solution_7 {
     public static void main(String[] args) {
+        test();
+    }
+
+    public static void test(){
         int[] preOrder = {3,9,20,15,7};
         int[] inOrder = {9,3,15,20,7};
-        RebuildTree rt = new RebuildTree();
+        Solution_7 rt = new Solution_7();
         TreeNode root = rt.buildTree(preOrder,inOrder);
     }
 
@@ -41,10 +45,11 @@ public class RebuildTree {
             return root;
         }
     }
-}
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
 }
