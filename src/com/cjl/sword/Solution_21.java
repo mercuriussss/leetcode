@@ -1,5 +1,7 @@
 package com.cjl.sword;
 
+import java.util.Arrays;
+
 /*
     问题描述：
         输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
@@ -13,19 +15,40 @@ package com.cjl.sword;
  */
 public class Solution_21 {
 
-
+    // 首尾双指针解法
+    // 时间复杂度O(N)，空间复杂度O(1)
     public int[] solution1(int[] nums){
+        int left = 0;
         int right = nums.length - 1;
         int tmp;
-        for (int i = 0; i < nums.length/2; i++) {
-            if(nums[i]%2 == 0){
-                while(nums[right]%2 == 0 && right > 0){
-                    right --;
-                }
-                tmp = nums[i];
-                nums[i] = nums[right];
-                nums[right] = tmp;
+        while(left < right) {
+            // x&1 位运算 等价于 x%2 取余运算，即皆可用于判断数字奇偶性。
+            while(left < right && (nums[left] & 1) == 1) {
+                left++;
             }
+            while(left < right && (nums[right] & 1) == 0) {
+                right--;
+            }
+            tmp = nums[left];
+            nums[left++] = nums[right];   // 交换后的left肯定为奇数，right肯定为偶数，可以将该两个值忽略掉，减少2次遍历
+            nums[right--] = tmp;
+        }
+        return nums;
+    }
+
+    // 快慢双指针解法
+    // 时间复杂度O(N)，空间复杂度O(1)
+    public int[] solution2(int[] nums){
+        int low = 0;
+        int fast = 0;
+        int tmp;
+        while(fast < nums.length){
+            if((nums[fast] & 1) == 1){
+                tmp = nums[fast];
+                nums[fast] = nums[low];
+                nums[low++] = tmp;
+            }
+            fast ++;
         }
         return nums;
     }
