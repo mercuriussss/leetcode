@@ -1,5 +1,7 @@
 package com.cjl.sword;
 
+import com.cjl.common.TreeNode;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,12 +63,5 @@ public class Solution_7 {
             root.right = rightSubtree;
             return root;
         }
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
     }
 }

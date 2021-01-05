@@ -12,6 +12,8 @@ package com.cjl.sword;
       输出: [4,5,9]
  */
 
+import com.cjl.common.ListNode;
+
 public class Solution_18 {
 
 
@@ -48,13 +50,5 @@ public class Solution_18 {
             pre.next = cur.next;
         }
         return head;
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

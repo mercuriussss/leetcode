@@ -10,6 +10,8 @@ package com.cjl.sword;
         0 <= 链表长度 <= 10000
  */
 
+import com.cjl.common.ListNode;
+
 public class Solution_6 {
     int[] res;
     int i;
@@ -27,14 +29,5 @@ public class Solution_6 {
         }
         recur(head.next, count + 1);
         res[i - count] = head.val;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

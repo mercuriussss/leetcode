@@ -1,5 +1,7 @@
 package com.cjl.sword;
 
+import com.cjl.common.ListNode;
+
 /*
     问题描述：
         输入一个链表，输出该链表中倒数第k个节点。
@@ -37,13 +39,5 @@ public class Solution_22 {
         if (++size == k)
             return head;
         return node;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
     }
 }
