@@ -20,5 +20,31 @@ package com.cjl.sword;
         最多会对 appendTail、deleteHead 进行 10000 次调用
  */
 
+import java.util.Stack;
+
 public class Solution_9 {
+    Stack<Integer> stack1;
+    Stack<Integer> stack2;
+    public Solution_9() {
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
+    }
+
+    public void appendTail(int value) {
+        stack1.push(value);
+    }
+
+    public int deleteHead() {
+        int deleteNode;
+        if(stack1.isEmpty() && stack2.isEmpty()){
+            return -1;
+        }
+        if(stack2.isEmpty()){
+            while(!stack1.isEmpty()){
+                stack2.push(stack1.pop());
+            }
+        }
+        deleteNode = stack2.pop();
+        return deleteNode;
+    }
 }
