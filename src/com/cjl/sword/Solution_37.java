@@ -23,43 +23,46 @@ import java.util.Queue;
  */
 public class Solution_37 {
 
-    public String serialize(TreeNode root){
-        if(root == null){
+    // 时间复杂度O(N)，空间复杂度O(N)
+    public String serialize(TreeNode root) {
+        if (root == null) {
             return "[]";
         }
-        StringBuilder res = new StringBuilder("[");
-        Queue<TreeNode> queue = new LinkedList<TreeNode>() {{ add(root);}};
-        while(!queue.isEmpty()){
+        List<Integer> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>() {{
+            add(root);
+        }};
+        while (!queue.isEmpty()) {
             TreeNode tmp = queue.poll();
-            if(tmp != null) {
-                res.append(tmp.val + ",");
+            if (tmp != null) {
+                res.add(tmp.val);
                 queue.add(tmp.left);
                 queue.add(tmp.right);
-            }else{
-                res.append("null,");
+            } else {
+                res.add(null);
             }
         }
-        res.deleteCharAt(res.length() - 1);
-        res.append("]");
         return res.toString();
     }
 
-    public TreeNode deserialize(String data){
-        if(data.equals("[]")){
+    public TreeNode deserialize(String data) {
+        if (data.equals("[]")) {
             return null;
         }
-        String[] vals = data.substring(1,data.length()-1).split(",");
+        String[] vals = data.substring(1, data.length() - 1).replaceAll("\\s", "").split(",");
         TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
-        Queue<TreeNode> queue = new LinkedList<TreeNode>() {{ add(root);}};
+        Queue<TreeNode> queue = new LinkedList<TreeNode>() {{
+            add(root);
+        }};
         int i = 1;
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            if(!vals[i].equals("null")){
+            if (!vals[i].equals("null")) {
                 node.left = new TreeNode(Integer.parseInt(vals[i]));
                 queue.add(node.left);
             }
             i++;
-            if(!vals[i].equals("null")){
+            if (!vals[i].equals("null")) {
                 node.right = new TreeNode(Integer.parseInt(vals[i]));
                 queue.add(node.right);
             }
