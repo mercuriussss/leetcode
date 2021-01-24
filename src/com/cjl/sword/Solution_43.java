@@ -11,7 +11,7 @@ package com.cjl.sword;
         输入：n = 13
         输出：6
     限制：
-        1 <= n < 2^31
+        1 <= n <2^31
  */
 public class Solution_43 {
 

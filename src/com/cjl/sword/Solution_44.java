@@ -11,11 +11,25 @@ package com.cjl.sword;
         输入：n = 11
         输出：0
     限制：
-        0 <= n < 2^31
+        0 <= n <2^31
  */
 public class Solution_44 {
 
-    public int solution1(int n){
-
+    // 时间复杂度O(logN)，空间复杂度O(logN)
+    public int solution1(int n) {
+        int digit = 1;
+        long start = 1;
+        long count = 9;
+        // 确认n所在数字的位数
+        while (n > count) {
+            n -= count;
+            digit += 1;
+            start *= 10;
+            count = digit * start * 9;
+        }
+        // 确定n所在的数字
+        long num = start + (n - 1) / digit;
+        // 确定n是所在数字的哪一位数
+        return Long.toString(num).charAt((n - 1) % digit) - '0';
     }
 }

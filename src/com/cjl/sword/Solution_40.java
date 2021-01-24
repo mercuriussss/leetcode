@@ -17,7 +17,7 @@ import java.util.Queue;
         输出：[0]
     限制：
         0 <= k <= arr.length <= 10000
-        0 <= arr[i] <= 10000
+        0 <= arr[i]<= 10000
  */
 public class Solution_40 {
 
