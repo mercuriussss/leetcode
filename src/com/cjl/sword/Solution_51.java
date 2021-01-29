@@ -19,7 +19,9 @@ public class Solution_51 {
     }
 
     public int merge(int[] arr, int start, int end) {
-        if (start >= end) return 0;//递归结束条件
+        if (start >= end) {
+            return 0;//递归结束条件
+        }
         int arrMid = start + ((end - start) >> 1);//左右数组分裂的中间界点位置
         //左右分别进行递归并统计逆序对数
         int count = merge(arr, start, arrMid) + merge(arr, arrMid + 1, end);
