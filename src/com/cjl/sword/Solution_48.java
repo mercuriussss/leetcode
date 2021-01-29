@@ -39,19 +39,18 @@ public class Solution_48 {
         return res;
     }
 
-
     // 双指针 + 哈希表
     // 时间复杂度O(N)，空间复杂度O(1)
-    public int solution2(String s){
+    public int solution2(String s) {
         Map<Character, Integer> map = new HashMap<>();
         int i = -1;
         int res = 0;
         for (int j = 0; j < s.length(); j++) {
-            if(map.containsKey(s.charAt(j))){
-                i = Math.max(i,map.get(s.charAt(j))); // 更新左指针 i
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(i, map.get(s.charAt(j))); // 更新左指针 i
             }
-            map.put(s.charAt(j),j); // 哈希表记录
-            res = Math.max(res,j-i);  // 更新结果
+            map.put(s.charAt(j), j); // 哈希表记录
+            res = Math.max(res, j - i);  // 更新结果
         }
         return res;
     }
