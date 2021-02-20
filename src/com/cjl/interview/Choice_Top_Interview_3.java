@@ -1,6 +1,9 @@
 package com.cjl.interview;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /*
     问题描述：
@@ -28,8 +31,8 @@ import java.util.*;
 public class Choice_Top_Interview_3 {
 
     // 时间复杂度是O(N)，空间复杂度是O(N)
-    public static int solution1(String s) {
-        if(s.length() == 0){
+    public int solution1(String s) {
+        if (s.length() == 0) {
             return 0;
         }
         int res = 0;
@@ -41,6 +44,23 @@ public class Choice_Top_Interview_3 {
             }
             res = Math.max(res, i - left + 1);
             map.put(s.charAt(i), i + 1);
+        }
+        return res;
+    }
+
+    // 时间复杂度是O(N)，空间复杂度是O(N)
+    public int solution2(String s) {
+        int len = s.length();
+        int res = 0;
+        int start = 0, end = 0;
+        Set<Character> set = new HashSet<>();
+        while (start < len && end < len) {
+            if (set.contains(s.charAt(end))) {
+                set.remove(s.charAt(start++));
+            } else {
+                set.add(s.charAt(end++));
+                res = Math.max(res, end - start);
+            }
         }
         return res;
     }
