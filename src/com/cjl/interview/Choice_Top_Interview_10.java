@@ -34,7 +34,6 @@ package com.cjl.interview;
  */
 public class Choice_Top_Interview_10 {
 
-    // 暴力破解
     // 时间复杂度是O(N)，空间复杂度是O(N)
     public boolean solution1(String s, String p) {
         int m = s.length() + 1;
@@ -55,7 +54,7 @@ public class Choice_Top_Interview_10 {
                         dp[i][j] = true;
                     }else if(dp[i][j - 1]) {    // 将字符组合 p[j - 2] * 看作出现 1 次时，能否匹配
                         dp[i][j] = true;
-                    }else if(dp[i - 1][j] && s.charAt(i - 1) == p.charAt(j - 2)) {  // 让字符 p[j - 2] 多出现 1 次时，能否匹配
+                    }else if(dp[i - 1][j] && s.charAt(i - 1) == p.charAt(j - 2)) {  // 让字符 p[j - 2] 出现 2 次时，能否匹配
                         dp[i][j] = true;
                     }else if(dp[i - 1][j] && p.charAt(j - 2) == '.') {  // 让字符 '.' 多出现 1 次时，能否匹配
                         dp[i][j] = true;
