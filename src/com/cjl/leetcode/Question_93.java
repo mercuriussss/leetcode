@@ -36,31 +36,31 @@ public class Question_93 {
     StringBuilder sb = new StringBuilder();
 
     public List<String> solution1(String s) {
-        if(s.length() > 12) {
+        if (s.length() > 12) {
             return res;
         }
         sb.append(s);
-        backTrack(sb,0,0);
+        backTrack(sb, 0, 0);
         return res;
     }
 
     private void backTrack(StringBuilder sb, int start, int pointNum) {
         // 逗号数量为3时，分隔结束
-        if(pointNum == 3) {
-            if(isValid(sb.substring(start,sb.length()))) {
+        if (pointNum == 3) {
+            if (isValid(sb.substring(start, sb.length()))) {
                 res.add(sb.toString());
             }
             return;
         }
         for (int i = start; i < sb.length(); i++) {
-            if(isValid(sb.substring(start,i + 1))) {
+            if (isValid(sb.substring(start, i + 1))) {
                 // 在str的后⾯插⼊⼀个逗点
-                sb.insert(i+1,'.');
+                sb.insert(i + 1, '.');
                 // 插入逗号后，下一个子串的起始位置是i+2
                 backTrack(sb, i + 2, pointNum + 1);
                 // 回溯删去逗号
                 sb.deleteCharAt(i + 1);
-            }else {
+            } else {
                 break;
             }
         }
@@ -68,22 +68,22 @@ public class Question_93 {
 
     // 判断字符串s在左闭右闭区间[start, end]所组成的数字是否合法
     private Boolean isValid(String str) {
-        if(str == null || str.length() == 0) {
+        if (str == null || str.length() == 0) {
             return false;
         }
         // 以0为开头的数字不合法
-        if(str.charAt(0) == '0' && str.length() > 1) {
+        if (str.charAt(0) == '0' && str.length() > 1) {
             return false;
         }
         int num = 0;
         for (int i = 0; i < str.length(); i++) {
             // 遇到非数字字符则不合法
-            if(str.charAt(i) > '9' || str.charAt(i) < '0') {
+            if (str.charAt(i) > '9' || str.charAt(i) < '0') {
                 return false;
             }
             num = num * 10 + (str.charAt(i) - '0');
             // 大于255则不合法
-            if(num > 255) {
+            if (num > 255) {
                 return false;
             }
         }
