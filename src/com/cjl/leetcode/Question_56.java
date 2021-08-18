@@ -23,7 +23,7 @@ import java.util.*;
 public class Question_56 {
 
     public int[][] solution1(int[][] intervals) {
-        if(intervals == null || intervals.length == 1){
+        if (intervals == null || intervals.length == 1) {
             return intervals;
         }
         List<Integer> arr = new ArrayList<>();
@@ -36,16 +36,16 @@ public class Question_56 {
                 // 当前最小界大于前面的最大界，不能合并
                 arr.add(interval[0]);
                 arr.add(interval[1]);
-            }else if (interval[1] > preEnd){
+            } else if (interval[1] > preEnd) {
                 // 当前最小界小于或等于前面的最大界，并且当前最大界大于前面的最大界，可合并
                 arr.remove(arr.size() - 1);
                 arr.add(interval[1]);
             }
-            preEnd = Math.max(preEnd,interval[1]);
+            preEnd = Math.max(preEnd, interval[1]);
         }
-        int[][] res = new int[arr.size()/2][2];
+        int[][] res = new int[arr.size() / 2][2];
         for (int i = 0; i < arr.size(); i++) {
-            res[i/2][i%2] = arr.get(i);
+            res[i / 2][i % 2] = arr.get(i);
         }
         return res;
     }
