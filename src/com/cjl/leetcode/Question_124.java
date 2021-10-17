@@ -25,7 +25,7 @@ public class Question_124 {
 
     // 时间复杂度是O(N)，空间复杂度是O(N)
     int result = Integer.MIN_VALUE;
-    public int maxPathSum(TreeNode root) {
+    public int solution1(TreeNode root) {
         dfs(root);
         return result;
     }
