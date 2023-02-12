@@ -24,20 +24,16 @@ public class Question_42 {
         int sum = 0;
         // 去掉头尾两端的列
         for (int i = 1; i < height.length - 1; i++) {
-            int max_left = 0;
+            int maxLeft = 0;
             for (int j = i - 1; j >= 0; j--) {
-                if (height[j] > max_left) {
-                    max_left = height[j];
-                }
+                maxLeft = Math.max(maxLeft, height[j]);
             }
-            int max_right = 0;
-            for (int j = i + 1; j < height.length - 1; j++) {
-                if (height[j] > max_right) {
-                    max_right = height[j];
-                }
+            int maxRight = 0;
+            for (int j = i + 1; j < height.length; j++) {
+                maxRight = Math.max(maxRight, height[j]);
             }
             // 木桶效应，两者取其短
-            int min = Math.min(max_left, max_right);
+            int min = Math.min(maxLeft, maxRight);
             // 最短的要大于当前列才能蓄水
             if (min > height[i]) {
                 sum = sum + (min - height[i]);
@@ -61,7 +57,7 @@ public class Question_42 {
         for (int i = 1; i < height.length - 1; i++) {
             int min = Math.min(max_left[i],max_right[i]);
             if(min > height[i]){
-                sum += min;
+                sum += (min - height[i]);
             }
         }
         return sum;
