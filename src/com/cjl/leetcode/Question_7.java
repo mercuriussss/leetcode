@@ -41,4 +41,22 @@ public class Question_7 {
         }
         return flag ? res: -res;
     }
+
+    public static int solution2(int x) {
+        if (x == Integer.MIN_VALUE) {
+            return 0;
+        }
+        int res = 0;
+        int temp = Math.abs(x);
+        while (temp != 0) {
+            int num = temp % 10;
+            if (res > (Integer.MAX_VALUE - num) / 10) {
+                return 0;
+            } else {
+                res = res * 10 + num;
+                temp = temp / 10;
+            }
+        }
+        return (x > 0)? res : -res;
+    }
 }
