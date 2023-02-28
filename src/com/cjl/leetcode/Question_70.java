@@ -19,9 +19,12 @@ package com.cjl.leetcode;
         1.  1 阶 + 1 阶 + 1 阶
         2.  1 阶 + 2 阶
         3.  2 阶 + 1 阶
+    提示：
+        1 <= n <= 45
  */
 public class Question_70 {
 
+    // 时间复杂度O(N)，空间复杂度O(1)
     public int solution1(int n) {
         int[] res = new int[n + 1];
         res[0] = 1;
